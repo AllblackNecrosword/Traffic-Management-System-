@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Sans:wght@100;400&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto Slab', serif;
+}
+body {
+  background-color: #f4f4f4;
+}
+
+.logo {
+  width: 150px;
+}
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 8%;
+  padding-right: 8%;
+  background-color: #0d4da5;
+}
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 10px 25px;
+}
+nav ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+nav ul li a:hover {
+  color: #000;
+  transition: 0.4s;
+}
+.btn {
+  background-color: #146c94;
+  color: white;
+  text-decoration: none;
+  border: 2px solid transparent;
+  font-weight: bold;
+  padding: 7px 20px;
+  border-radius: 10px;
+  transition: transform.4s;
+}
+.btn:hover {
+  transform: scale(1.1);
+}
+.title {
+  color: #535353;
+  font-size: 30px;
+  font-weight: 600;
+  position: relative;
+  display: block;
+  margin-bottom: 15px;
+}
+.service_contain {
+  color: #535353;
+  position: relative;
+  min-height: 1px;
+  padding-left: 5%;
+  padding-right: 15px;
+}
+.Service_title {
+  border-bottom: 4px solid #22a7f0;
+}
+.services {
+  height: 200px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 89%;
+  justify-content: row;
+  margin-left: 6%;
+  margin-top: 10px;
+}
+.box {
+  width: 270px;
+  height: 80px;
+  border-radius: 5px;
+  margin: 5px 5px 11.5px 5px;
+  padding: 25px;
+  text-align: center;
+  font-size: 22px;
+  color: #1e7fb2;
+  cursor: pointer;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.box:hover {
+  transform: translateY(-10px);
+  background-color: #2596be;
+  color: #ffffff;
+}
+
+.image {
+  width: 100%;
+}
+
+.fa-solid {
+  margin-left: 15px;
+  color: 1e7fb2;
+}
+.about_content {
+  margin-left: 5%;
+  height: 500px;
+  display: flex;
+  justify-content: space-between;
+  /* border: 2px solid black; */
+}
+.text {
+  border: 2px solid black;
+  height: 200px;
+  width: 50%;
+  margin-top: 2%;
+}
+.about_img {
+  width: 48%;
+  /* margin-top: 2%; */
+  border: 2px solid black;
+  height: 300px;
+}
+.aboutUs {
+  padding-top: 2%;
+  margin-top: 5%;
+  height: 400px;
+  background-color: #ffffff;
+}
+
+.main_footer {
+  background-color: #24262b;
+  padding: 70px 0;
+}
+
+.footer_contain {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.rows {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-col {
+  width: 25%;
+  padding: 0 15px;
+}
+
+.footer-col h4 {
+  font-size: 18px;
+  color: #ffffff;
+  text-transform: capitalize;
+  margin-bottom: 30px;
+  font-weight: 500;
+  position: relative;
+  margin-left: 5%;
+}
+.footer-col h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  background-color: #2596be;
+  height: 2px;
+  box-sizing: border-box;
+  width: 50px;
+}
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-col li {
+  margin-bottom: 10px;
+}
+
+.footer-col li a {
+  text-decoration: none;
+  font-size: 16px;
+  margin-left: 5%;
+  display: block;
+  color: #bbbbbb;
+  text-transform: capitalize;
+  transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+  color: #ffffff;
+  padding-left: 8px;
+}
+.footer-col .scoial-link a {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  margin-right: 0 10px 10px 0;
+  background-color: rgb(255, 255, 255, 0.2);
+  text-align: center;
+  line-height: 34px;
+  border-radius: 50%;
+  color: #ffffff;
+  transition: all 0.5s ease;
+}
+.footer-col .scoial-link a:hover {
+  color: #34363b;
+  background-color: #ffffff;
+}
+.location {
+  color: #bbbbbb;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.Phone {
+  color: #bbbbbb;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.email {
+  color: #bbbbbb;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.name {
+  color: #bbbbbb;
+  margin-left: 15px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.text-fo {
+  margin-left: 13px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.text-fo:hover {
+  color: #ffffff;
+  padding-left: 8px;
+}
+.copy-right {
+  width: 100%;
+  padding: 8px 100px;
+  text-align: center;
+  color: #bbbbbb;
+  margin-top: 1px;
+  background-color: #24262b;
+}
+
