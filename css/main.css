@@ -168,9 +168,7 @@ nav ul li a:hover {
 }
 .about_img {
   width: 40%;
-  /* margin-right: 6%; */
   margin-left: 2%;
-  /* border: 2px solid black; */
   height: 322px;
   margin-top: 2%;
 }
@@ -179,7 +177,6 @@ nav ul li a:hover {
   height: 320px;
 }
 .up-image {
-  /* border: 2px solid yellow; */
   height: 322px;
   width: 100%;
 }
@@ -189,7 +186,6 @@ nav ul li a:hover {
   margin-top: 5%;
   height: 480px;
   background-color: #ffffff;
-  /* border: 2px solid green; */
 }
 
 .main_footer {
