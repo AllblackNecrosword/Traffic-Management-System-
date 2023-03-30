@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/f0315fce63.js" crossorigin="anonymous"></script>
     <title>Nav</title>
 </head>
@@ -17,7 +17,7 @@
         <div class="main">
             <nav>
                 <!-- <h1>Logo</h1> -->
-                <img class="logo" src="image/logo.png">
+                <img class="logo" src="images/logo.png">
                 <ul>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Service</a></li>
@@ -40,13 +40,13 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="coursel-img" src="image/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" alt="">
+                <img class="coursel-img" src="images/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" alt="">
             </div>
             <div class="carousel-item">
-                <img class="coursel-img" src="image/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" alt="">
+                <img class="coursel-img" src="images/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" alt="">
             </div>
             <div class="carousel-item">
-                <img class="coursel-img" src="image/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" alt="">
+                <img class="coursel-img" src="images/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" alt="">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -130,7 +130,7 @@
             </div>
             <div class="about_img">
                 <div class="up-image">
-                    <img class="about_image" src="image/stopp.jfif" alt="">
+                    <img class="about_image" src="images/stopp.jfif" alt="">
                 </div>
                 <!-- <div class="down-image">
                      <img class="about_image" src="image/stopp.jfif" alt="">
