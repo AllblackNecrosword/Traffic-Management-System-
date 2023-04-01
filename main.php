@@ -176,7 +176,15 @@
                         </div>
                     </div>
                 </div>
-              
+                <div class="footer-col">
+                    <h4>Follow us</h4>
+                    <div class="scoial-link">
+                        <a href=""><i class="fa-brands fa-facebook-f"></i></i></a>
+                        <a href=""><i class="fa-brands fa-instagram"></i></a>
+                        <a href=""><i class="fa-brands fa-twitter"></i></a>
+                        <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
 
             </div>
         </div>
