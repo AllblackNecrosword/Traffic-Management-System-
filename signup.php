@@ -57,7 +57,30 @@
     <span></span>
     <label>Confirm Password</label>
   </div>
-  
+  <?php
+  if (isset($_POST['signup'])) {
+    // Get the email and password from the form
+    include 'files/conn.php';
+    $username = $_POST['username'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $password = $_POST['password'];
+    $cpassword = $_POST['cpassword'];
+
+    if ($password == $cpassword) {
+      $sql = "INSERT INTO users (Name, Email, Phone, Password) VALUES ('$username','$email','$phone','$password')";
+
+      $result = mysqli_query($conn, $sql);
+      if ($result) {
+        echo 'Account created successfully';
+      }
+
+
+    } else {
+      echo "<div style='color: red'>Password does not match</div>";
+    }
+  }
+  ?>
   <input type="submit" name='signup' value="Create Account">
   <div class="signup_link">
     <p class="createAccount">Joined us before?<a href="login.php">Login</a></p>
