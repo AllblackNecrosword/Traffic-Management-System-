@@ -13,53 +13,39 @@
 </head>
 
 <body>
-    <header>
-        <div class="main">
-            <nav>
-                <!-- <h1>Logo</h1> -->
-                <img class="logo" src="images/logo.png">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Service</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <!-- <li><a href="#">Contact Us</a></li> -->
-                    <li><a href="#">Notices</a></li>
-                </ul>
-                <a href="login.html" class="btn">Login</a>
-            </nav>
-        </div>
-    </header>
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                aria-label="Slide 3"></button>
-        </div>
+<div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="coursel-img" src="images/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" alt="">
+                <img src="images/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img class="coursel-img" src="images/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" alt="">
+                <img src="images/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img class="coursel-img" src="images/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" alt="">
+                <img src="images/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
+        <nav>
+            <img class="logo" src="image/logo.png">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Service</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Notices</a></li>
+            </ul>
+            <a href="login.html" class="btn">Login</a>
+        </nav>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
+    
     <div class="service_contain">
         <div class="title">
             <span class="Service-title">Our Se</span>rvice
