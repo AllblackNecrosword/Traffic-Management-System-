@@ -45,7 +45,7 @@
                 <input type="text" name = "email" required>
                 <span></span>
                 <label>Email</label>
-            </div>
+            </div>S
 
             <div class="txt_field">
     <input type="password" id="password" name="password" required>
