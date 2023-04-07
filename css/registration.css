@@ -164,28 +164,6 @@ button {
     color: #fff;
    }
 
-/* ******************************************************************************************************************************************************* */
-   
-
-/* .button-container{
-    margin: 15px 0;
-}
-
-.button-container button{
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px;
-    display: block;
-    font-size: 20px;
-    color: aliceblue;
-    border: none;
-    border-radius: 5px;
-    background-image: linear-gradient(to right, rgb(200, 200, 243),rgb(44, 44, 236))
-}
-
-.button-container button:hover{
-    background-image: linear-gradient(to right,rgb(44, 44, 236) , rgb(200, 200, 243));
-} */
 @media(max-width:600px){
     .container{
         min-width: 280px;
@@ -208,32 +186,5 @@ button {
         width: 60%;
     }
 }
-/*  */
-/* nav {
-    background-color: #3b67eb;
-    color: #fff;
-    padding: 10px;
-  }
-  
-  nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  nav li {
-    margin-right: 20px;
-  }
-  
-  nav li a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  nav li a:hover {
-    background-color: #555555;
-  } */
+
   
