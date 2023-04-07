@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Sans:wght@100;400&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Sans:wght@100;400&display=swap"); */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Roboto Slab", serif;
+  font-family: sans-serif;
+  /* font-family: "Roboto Slab", serif; */
 }
 body {
   background-color: #f4f4f4;
@@ -88,6 +89,7 @@ nav ul li a:hover {
   position: relative;
   min-height: 1px;
   padding-left: 5%;
+  padding-top: 3%;
   padding-right: 15px;
 }
 .Service-title {

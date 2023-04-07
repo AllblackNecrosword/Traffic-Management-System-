@@ -13,7 +13,15 @@
 </head>
 
 <body>
-<div id="carouselExample" class="carousel slide">
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="images/Nepal-Go_Pro-Police-John-Rae-_87A6164.jpg" class="d-block w-100" alt="...">
@@ -26,14 +34,15 @@
             </div>
         </div>
         <nav>
-            <img class="logo" src="image/logo.png">
+            <img class="logo" src="images/logo.png">
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Service</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="#service_contain">Service</a></li>
+                <li><a href="#aboutUs">About Us</a></li>
+                <li><a href="#main_footer">Contact Us</a></li>
                 <li><a href="#">Notices</a></li>
             </ul>
-            <a href="login.html" class="btn">Login</a>
+            <a href="login.php" class="btn">Login</a>
         </nav>
 
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -45,8 +54,9 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    
-    <div class="service_contain">
+
+
+    <div id="service_contain" class="service_contain">
         <div class="title">
             <span class="Service-title">Our Se</span>rvice
         </div>
@@ -87,7 +97,7 @@
             <h6 class="box-heading"> Lost Document<br>Application</h6>
         </div>
     </div>
-    <div class="aboutUs">
+    <div id="aboutUs" class="aboutUs">
         <div class="service_contain">
             <div class="title">
                 <span class="Service-title">About</span> Us
@@ -125,7 +135,7 @@
             </div>
         </div>
     </div>
-    <footer class="main_footer">
+    <footer id="main_footer" class="main_footer">
         <div class="footer_contain">
             <div class="rows">
                 <div class="footer-col">

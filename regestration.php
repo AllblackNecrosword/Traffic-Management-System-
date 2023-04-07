@@ -1,100 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="css/registration.css">
+  <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
   <nav>
+    <img class="logo" src="images/logo.png">
     <ul>
-      <li><a href="user.php">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#">Home</a></li>
+      <li><a href="#service_contain">Service</a></li>
+      <li><a href="#aboutUs">About Us</a></li>
+      <li><a href="#main_footer">Contact Us</a></li>
+      <li><a href="#">Notices</a></li>
     </ul>
+    <a href="login.php" class="btn">Login</a>
   </nav>
 
   <div class="boddy">
-  <div class="container">
-    <form action="vehicleRegistration.php" method="post">
-      <h2>Vechicle Registation</h2>
-      <div class="content">
+    <div class="container">
+      <form action="vehicleRegistration.php" method="post">
+        <h2>Vechicle Registation</h2>
+        <div class="content">
 
-        <div class="input-box">
-        <label for="vehicle">Vehicle Type</label>
-      <select name="vehicle" id="vehicle">
-      <option value="Twowheelers">Two wheelers</option>
-      <option value="Threewheelers">Three wheelers</option>
-      <option value="Fourwheelers">Four wheelers</option>
-      </select>
+          <div class="input-box">
+            <label for="vehicle">Vehicle Type</label>
+            <select name="vehicle" id="vehicle">
+              <option value="Twowheelers">Two wheelers</option>
+              <option value="Threewheelers">Three wheelers</option>
+              <option value="Fourwheelers">Four wheelers</option>
+            </select>
+          </div>
+
+
+          <div class="input-box">
+            <label for="vehiclemodel">Vehicle Model</label>
+            <input type="text" placeholder="Enter Full Name" name="vehiclemodel" required>
+          </div>
+
+          <div class="input-box">
+            <label for="vehiclenumber">Vehicle Number</label>
+            <input type="text" placeholder="Enter Vechicle Number" name="vehiclenumber" required>
+          </div>
+
+          <div class="input-box">
+            <label for="enginenumber">Engine Number</label>
+            <input type="text" placeholder="Enter valid Engine number" name="enginenumber" required>
+          </div>
+
+          <div class="input-box">
+            <label for="chasisnumber">Chasis Number</label>
+            <input type="text" placeholder="Enter Chasis Number" name="chasisnumber" required>
+          </div>
+
+          <div class="input-box">
+            <label for="Dname">Dealer Name/Company</label>
+            <input type="text" placeholder="Enter Dealer Name" name="Dname" required>
+          </div>
+
+          <div class="input-box">
+            <label for="Daddress">Dealer Address</label>
+            <input type="text" placeholder="Enter Address" name="Daddress" required>
+          </div>
+
+          <div class="input-box">
+            <label for="Rowner">Reg Owner</label>
+            <input type="text" placeholder="Enter Reg owner" name="Rowner" required>
+          </div>
+
+          <div class="input-box">
+            <label for="Raddress">Reg Address</label>
+            <input type="text" placeholder="Enter Address" name="Raddress" required>
+          </div>
+
+          <div class="input-box">
+            <label for="colour">Color</label>
+            <input type="text" placeholder="color" name="color" required>
+          </div>
+
         </div>
-
-
-        <div class="input-box">
-          <label for="vehiclemodel">Vehicle Model</label>
-          <input type="text" placeholder="Enter Full Name" name="vehiclemodel" required>
+        <div class="alert">
+          <p>By clicking Register, you agree to our Terms, Privacy Policy and Cookies Ploicy.</p>
         </div>
-
-        <div class="input-box">
-          <label for="vehiclenumber">Vehicle Number</label>
-          <input type="text" placeholder="Enter Vechicle Number" name="vehiclenumber" required>
-        </div>
-
-        <div class="input-box">
-          <label for="enginenumber">Engine Number</label>
-          <input type="text" placeholder="Enter valid Engine number" name="enginenumber" required>
-        </div>
-
-        <div class="input-box">
-          <label for="chasisnumber">Chasis Number</label>
-          <input type="text" placeholder="Enter Chasis Number" name="chasisnumber" required>
-        </div>
-
-        <div class="input-box">
-          <label for="Dname">Dealer Name/Company</label>
-          <input type="text" placeholder="Enter Dealer Name" name="Dname" required>
-        </div>
-
-        <div class="input-box">
-          <label for="Daddress">Dealer Address</label>
-          <input type="text" placeholder="Enter Address" name="Daddress" required>
-        </div>
-
-        <div class="input-box">
-          <label for="Rowner">Reg Owner</label>
-          <input type="text" placeholder="Enter Reg owner" name="Rowner" required>
-        </div>
-
-        <div class="input-box">
-          <label for="Raddress">Reg Address</label>
-          <input type="text" placeholder="Enter Address" name="Raddress" required>
-        </div>
-
-        <div class="input-box">
-          <label for="colour">Color</label>
-          <input type="text" placeholder="color" name="color" required>
-        </div>
-
-      </div>
-      <div class="alert">
-        <p>By clicking Register, you agree to our Terms, Privacy Policy and Cookies Ploicy.</p>
-      </div>
-      <!-- <div class="button-container">
+        <!-- <div class="button-container">
         <button type="submit">Register</button>
       </div> -->
-      <button class="learn-more" name ="register">
-        <span class="circle" aria-hidden="true">
-        <span class="icon arrow"></span>
-        </span>
-        <span class="button-text">Register</span>
-      </button>
+        <button class="learn-more" name="register">
+          <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+          </span>
+          <span class="button-text">Register</span>
+        </button>
 
-    </form>
+      </form>
+    </div>
   </div>
-</div>
 </body>
+
 </html>
 <!-- ********************************************php******************************************************* -->
 
@@ -102,7 +110,7 @@
 include 'files/conn.php';
 
 // Check if the form has been submitted
-if(isset($_POST['register'])) {
+if (isset($_POST['register'])) {
 
   // Get values from form input fields
   $vehicle_type = $_POST['vehicle'];
@@ -122,35 +130,34 @@ if(isset($_POST['register'])) {
 
   $users_query = "SELECT * FROM vehicleregistration WHERE vehicleNumber = '$vehicle_number'";
 
-        $users_result = mysqli_query($conn, $users_query);
+  $users_result = mysqli_query($conn, $users_query);
 
-        
-      if (!$users_result) {
-        echo "Error: " . mysqli_error($conn);
-        exit();
-      }
-      if (mysqli_num_rows($users_result) > 0){
-        echo "<div style='color: red'>That vehicle has already been registered</div>";
-        
-        exit();
 
-    }else{
-      // Insert values into database table
-      $sql = "INSERT INTO vehicleregistration (Type, Model, VehicleNumber, EngineNumber, ChassisNumber, Company, DealerAddress, RegisteredOwner, RegisteredAddress, Color, RegisteredDate)
+  if (!$users_result) {
+    echo "Error: " . mysqli_error($conn);
+    exit();
+  }
+  if (mysqli_num_rows($users_result) > 0) {
+    echo "<div style='color: red'>That vehicle has already been registered</div>";
+
+    exit();
+
+  } else {
+    // Insert values into database table
+    $sql = "INSERT INTO vehicleregistration (Type, Model, VehicleNumber, EngineNumber, ChassisNumber, Company, DealerAddress, RegisteredOwner, RegisteredAddress, Color, RegisteredDate)
       VALUES ('$vehicle_type', '$vehicle_model', '$vehicle_number', '$engine_number', '$chasis_number', '$dealer_name', '$dealer_address', '$reg_owner', '$reg_address', '$color', '$date')";
 
-      if ($conn->query($sql) === TRUE) {
-        echo "<div style='color: red'>Your vehicle has been registered successfully</div>";
-      } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-      }
-
+    if ($conn->query($sql) === TRUE) {
+      echo "<div style='color: red'>Your vehicle has been registered successfully</div>";
+    } else {
+      echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
-  
+  }
+
+
 }
 
 // Close connection
 $conn->close();
 ?>
-
