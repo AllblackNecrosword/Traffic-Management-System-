@@ -7,52 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/landing.css">
     <link rel="stylesheet" href="css/drop.css">
     <script src="https://kit.fontawesome.com/f0315fce63.js" crossorigin="anonymous"></script>
     <title>Nav</title>
 </head>
 
 <body>
-    <header>
-        <div class="main">
-            <nav>
-             
-                <img class="logo" src="images/logo.png">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Service</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <!-- <li><a href="#">Contact Us</a></li> -->
-                    <li><a href="#">Notices</a></li>
-                </ul>
-                <div class="session">
-                <?php
-                                session_start();
-                                if (isset($_SESSION['username'])) {
-                                    echo '<div class="dropdown">
-                                    <img src="images/profile.png" alt="Profile Icon" class="dropbtn">
-                                    <div class="dropdown-content">
-                                    <a href="#">Profile</a>
-                                    <a href="#">Settings</a>
-                                    <a href="logout.php">Logout</a>
-                                    </div>
-                                    </div>';
-                                
-                                } else {
-                                    echo '<a class="nav-link" href="login.php">Login</a>';
-                                }
-                                
-                                ?>
-
-                </div>
-               
-                        
-               
-            </nav>
-        </div>
-    </header>
-    <div id="carouselExampleIndicators" class="carousel slide">
+    <div id="carouselExample" class="carousel slide">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 1"></button>
@@ -63,29 +25,60 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="coursel-img" src="images/traffic.jpg" alt="">
+                <img src="images/traffic.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img class="coursel-img" src="images/traffic.jpg" alt="">
+                <img src="images/traffic.jpg" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img class="coursel-img" src="images/traffic.jpg" alt="">
+                <img src="images/traffic.jpg" class="d-block w-100" alt="...">
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
+        <nav>
+            <img class="logo" src="images/logo.png">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#service_contain">Service</a></li>
+                <li><a href="#aboutUs">About Us</a></li>
+                <li><a href="#main_footer">Contact Us</a></li>
+                <li><a href="#">Notices</a></li>
+            </ul>
+            <?php
+                                session_start();
+                                if (isset($_SESSION['username'])) {
+                                    echo '<div class="dropdown">';
+                                   echo' <img src="images/profile.png" alt="Profile Icon" class="dropbtn">
+                                    <div class="dropdown-content">
+                                    <a href="#">Profile</a>
+                                    <a href="#">Settings</a>
+                                    <a href="logout.php">Logout</a>
+                                    </div>';
+                                    echo '<p class ="username">' . $_SESSION['name'] . '</p>';
+                                  echo '</div>';
+                                    
+                                
+                                } else {
+                                    echo '<a href="login.php" class="btn">Login</a>';
+                                }
+                                
+                                ?>
+            
+        </nav>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <div class="service_contain">
+
+
+    <div id="service_contain" class="service_contain">
         <div class="title">
-            <span class="Service-title">Our Se</span>rvice
+            <span class="Service-title">Our Service</span>
         </div>
         <h5 class="our_dec">All you need to know about our services</h5>
     </div>
@@ -93,11 +86,11 @@
     <div class="services">
         <div class="box">
             <i class="fa-solid fa-car"></i>
-           <a href="login.php"><h6 class="box-heading"> Vehicles<br>Regestration</h6></a> 
+            <h6 class="box-heading"> Vehicles<br>Regestration</h6>
         </div>
         <div class="box">
             <i class="fa-solid fa-house"></i>
-            <a href="login.php"><h6 class="box-heading"> Lost Vehicles<br>Application</h6></a> 
+            <h6 class="box-heading"> Lost Vehicles<br>Application</h6>
         </div>
         <div class="box">
             <i class="fa-solid fa-file"></i>
@@ -124,7 +117,7 @@
             <h6 class="box-heading"> Lost Document<br>Application</h6>
         </div>
     </div>
-    <div class="aboutUs">
+    <div id="aboutUs" class="aboutUs">
         <div class="service_contain">
             <div class="title">
                 <span class="Service-title">About</span> Us
@@ -162,7 +155,7 @@
             </div>
         </div>
     </div>
-    <footer class="main_footer">
+    <footer id="main_footer" class="main_footer">
         <div class="footer_contain">
             <div class="rows">
                 <div class="footer-col">
@@ -181,7 +174,7 @@
                 </div>
                 <div class="footer-col">
                     <h4>Contact Us</h4>
-                    <div class="footer-contact">+
+                    <div class="footer-contact">
                         <div class="name">
                             <span>Smart Traffic Optimization and Planning System</span>
                         </div>

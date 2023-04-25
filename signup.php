@@ -76,75 +76,68 @@
   </div>
   <!-- ********************php*********************************************** -->
   <?php
+  // Check if the user has submitted the signup form
   if (isset($_POST['signup'])) {
-    // Get the email and password from the form
+
+    // Include the file that contains the database connection code
     include 'files/conn.php';
+
+    // Get the user inputs from the form
     $username = $_POST['username'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
 
-    // Email verification
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  echo "<div style='color: red'>Invalid email format</div>";
- 
-  exit();
-}
+    // Validate the email format using the filter_var function
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      echo "<div style='color: red'>Invalid email format</div>";
+      exit();
+    }
 
-// Password strudiness  verification
-if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password)) {
-  echo "<div style='color: red'>Password should be at least 8 characters long, and contain at least one uppercase letter, one lowercase letter, one number and one special character</div>";
-  exit();
-}
+    // Validate the password format using a regular expression
+    if (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password)) {
+      echo "<div style='color: red'>Password should be at least 8 characters long, and contain at least one uppercase letter, one lowercase letter, one number and one special character</div>";
+      exit();
+    }
 
+    // Hash the password using the password_hash function
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-// Hash the password
-$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-
-// Output the hashed password
-echo $hashedPassword;
-
-
+    // Check if the passwords match
     if ($password == $cpassword) {
-      
-        $users_query = "SELECT * FROM users WHERE Email = '$email'";
 
-        $users_result = mysqli_query($conn, $users_query);
+      // Check if the email is already registered in the database
+      $users_query = "SELECT * FROM users WHERE Email = '$email'";
+      $users_result = mysqli_query($conn, $users_query);
 
-        
       if (!$users_result) {
         echo "Error: " . mysqli_error($conn);
         exit();
       }
+
       if (mysqli_num_rows($users_result) > 0){
+        // The email is already registered, display an error message
         echo "<div style='color: red'>That email has already been registered</div>";
-        
         exit();
 
-    }else{
-      $users_query = "SELECT * FROM users WHERE Email = '$email' AND Password = '$password'";
+      } else {
+        // The email is not yet registered, insert the user data into the database
+        $sql = "INSERT INTO users (Name, Email, Phone, Password) VALUES ('$username','$email','$phone','$hashedPassword')";
+        $result = mysqli_query($conn, $sql);
 
-    $users_result = mysqli_query($conn, $users_query);
-
-
-    $sql = "INSERT INTO users (Name, Email, Phone, Password) VALUES ('$username','$email','$phone','$hashedPassword')";
-
-    $result = mysqli_query($conn, $sql);
-    if ($result) {
-       echo "<div style='color: red'>Account Created Successfully</div>";
-      
-    }
-
-    }
-  
-
+        if ($result) {
+          // The user account has been created successfully, display a success message
+          echo "<div style='color: green'>Account created successfully</div>";
+        }
+      }
     } else {
+      // The passwords don't match, display an error message
       echo "<div style='color: red'>Password does not match</div>";
-
     }
   }
-  ?>
+?>
+
 
 
 

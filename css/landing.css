@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Sans:wght@100;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&display=swap");
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
   font-family: "Roboto Slab", serif;
 }
 body {
@@ -18,29 +18,23 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding-top: 15px;
-  /* padding-bottom: 15px; */
   padding-left: 8%;
   padding-right: 8%;
-  background-color: #22a7f0;
   margin-bottom: 1%;
-  position: fixed;
+  position: absolute;
   top: 0;
+  left: 0;
+  z-index: 100;
+  list-style: none;
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 15px;
-  padding-left: 8%;
-  padding-right: 8%;
-  background-color: rgb(0,0,0,0.4);
-  margin-bottom: 1%;
-  z-index: 1;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 nav ul li {
   list-style-type: none;
   display: inline-block;
   padding: 10px 25px;
+  box-sizing: border-box;
+  font-family: "EB Garamond", serif;
 }
 nav ul li a {
   color: #ffffff;
@@ -68,7 +62,7 @@ nav ul li a:hover {
   transform: scale(1.1);
 }
 .coursel-img {
-  height: 750px;
+  height: 500px;
   width: 100%;
 }
 .coursel {
@@ -80,7 +74,7 @@ nav ul li a:hover {
   margin: 1.67em 0;
   font-weight: bold;
 }
-.carousel-inner{
+.carousel-inner {
   margin-bottom: 1%;
 }
 .title {
@@ -96,6 +90,7 @@ nav ul li a:hover {
   position: relative;
   min-height: 1px;
   padding-left: 5%;
+  padding-top: 3%;
   padding-right: 15px;
 }
 .Service-title {
@@ -110,6 +105,7 @@ nav ul li a:hover {
   justify-content: space-between;
   margin-left: 6%;
   margin-top: 10px;
+  /* border:2px solid red; */
 }
 .box {
   width: 270px;
@@ -132,6 +128,8 @@ nav ul li a:hover {
   font-size: 0.67em;
   margin: 2.33em 0;
   font-weight: bold;
+  box-sizing: border-box;
+  /* font-family: "Roboto Slab", serif; */
 }
 
 .box:hover {
@@ -321,7 +319,89 @@ nav ul li a:hover {
 }
 
 
+/* Styles for screens between 577px and 991.98px */
+/* @media (min-width: 576px) and (max-width: 991.98px) {
+  .carousel-item img {
+    height: 300px;
+  }
 
+  .logo {
+    height: 60px;
+  }
 
+  nav {
+    padding: 20px;
+  }
 
+  nav ul {
+    margin-top: 20px;
+  }
 
+  .btn {
+    margin-top: 20px;
+  }
+
+  .service_contain .Service-title {
+    font-size: 3rem;
+  }
+
+  .our_dec {
+    font-size: 1.5rem;
+  }
+
+  .box {
+    width: 50%;
+  }
+
+  .box-heading {
+    font-size: 1.5rem;
+  }
+} */
+
+/* Styles for screens larger than 992px */
+/* @media (min-width: 992px) {
+  .carousel-item img {
+    height: 500px;
+  }
+
+  .logo {
+    height: 80px;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+
+  nav ul {
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav li {
+    margin-left: 20px;
+  }
+
+  .btn {
+    margin-top: 0;
+  }
+
+  .service_contain .Service-title {
+    font-size: 4rem;
+  }
+
+  .our_dec {
+    font-size: 2rem;
+  }
+
+  .box {
+    width: 25%;
+  }
+
+  .box-heading {
+    font-size: 2rem;
+  }
+} */

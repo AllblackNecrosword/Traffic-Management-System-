@@ -13,25 +13,7 @@
   <script src="lost.js"></script>
 <body>
   <header>
-    <div class="main">
-        <nav>
-            <!-- <h1>Logo</h1> -->
-            <!-- <img class="logo" src="images/viber_image_2023-03-16_10-13-00-055.png"> -->
-            <ul>
-                <li><button class="btn"> Home
-                </button></li>
-
-                <li><button class="btn"> Services
-                </button></li>
-                <li><button class="btn"> About us
-                </button></li>
-                <!-- <li><a href="#">Contact Us</a></li> -->
-                <li><button class="btn"> News
-                </button></li>
-            </ul>
-            <a href="login.html" class="btn-log">Login</a>
-        </nav>
-    </div>
+    <?php include('files/nav.html'); ?>
 </header>
 
 

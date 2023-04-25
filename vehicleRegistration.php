@@ -8,13 +8,7 @@
   <link rel="stylesheet" href="css/registration.css">
 </head>
 <body>
-  <nav>
-    <ul>
-      <li><a href="user.php">Home</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Contact</a></li>
-    </ul>
-  </nav>
+ <?php include('files/nav.html');?>
 
   <div class="boddy">
   <div class="container">
@@ -120,15 +114,34 @@ if(isset($_POST['register'])) {
   date_default_timezone_set('Asia/Kolkata');
   $date = date('Y-m-d H:i:s');
 
-  // Insert values into database table
-  $sql = "INSERT INTO vehicleregistration (Type, Model, VehicleNumber, EngineNumber, ChassisNumber, Company, DealerAddress, RegisteredOwner, RegisteredAddress, Color, RegisteredDate)
-  VALUES ('$vehicle_type', '$vehicle_model', '$vehicle_number', '$engine_number', '$chasis_number', '$dealer_name', '$dealer_address', '$reg_owner', '$reg_address', '$color', '$date')";
+  $users_query = "SELECT * FROM vehicleregistration WHERE vehicleNumber = '$vehicle_number'";
 
-  if ($conn->query($sql) === TRUE) {
-    echo "<div style='color: red'>Your vehicle has been registered successfully</div>";
-  } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-  }
+        $users_result = mysqli_query($conn, $users_query);
+
+        
+      if (!$users_result) {
+        echo "Error: " . mysqli_error($conn);
+        exit();
+      }
+      if (mysqli_num_rows($users_result) > 0){
+        echo "<div style='color: red'>That vehicle has already been registered</div>";
+        
+        exit();
+
+    }else{
+      // Insert values into database table
+      $sql = "INSERT INTO vehicleregistration (Type, Model, VehicleNumber, EngineNumber, ChassisNumber, Company, DealerAddress, RegisteredOwner, RegisteredAddress, Color, RegisteredDate)
+      VALUES ('$vehicle_type', '$vehicle_model', '$vehicle_number', '$engine_number', '$chasis_number', '$dealer_name', '$dealer_address', '$reg_owner', '$reg_address', '$color', '$date')";
+
+      if ($conn->query($sql) === TRUE) {
+        echo "<div style='color: red'>Your vehicle has been registered successfully</div>";
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+
+    }
+
+  
 }
 
 // Close connection

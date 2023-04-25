@@ -83,7 +83,7 @@
 
       $admin_result = mysqli_query($conn, $admin_query);
 
-      $users_query = "SELECT * FROM users WHERE Email = '$email' AND Password = '$password'";
+      $users_query = "SELECT * FROM users WHERE Email = '$email'";
 
       $users_result = mysqli_query($conn, $users_query);
 
@@ -105,21 +105,23 @@
           echo "Admin logged in successfully";
          
           // set session variables and redirect to admin page
-    session_start();
-    $_SESSION['username'] = $username;
-    $_SESSION['user_type'] = 'admin';
-    echo "<script>showMessage();</script>";
-    header("Location: admin.php");
-    exit();
+        session_start();
+       $_SESSION['username'] = $username;
+      $_SESSION['user_type'] = 'admin';
+      echo "<script>showMessage();</script>";
+      header("Location: admin.php");
+      exit();
           
       } else if (mysqli_num_rows($users_result) > 0){
-          // User not found, display an error message
-          echo "User logged in successfully";
+        $row = mysqli_fetch_assoc($users_result);
+        $name = $row['Name'];
+          
           session_start();
-    $_SESSION['username'] = $username;
-    $_SESSION['user_type'] = 'user';
-    header("Location: dashboard.php");
-    exit();
+          $_SESSION['username'] = $username;
+          $_SESSION['name'] = $name;
+          $_SESSION['user_type'] = 'user';
+          header("Location: landing.php");
+          exit();
       }else{
         echo "<div style='color: red'>Password does not match</div>";
       }
