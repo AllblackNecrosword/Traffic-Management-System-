@@ -51,5 +51,31 @@
     font-weight: bold;
     margin-left: 0px;
   }
-  
+  .services {
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 89%;
+    justify-content: space-between;
+    margin-left: 6%;
+    margin-top: 10px;
+    /* border:2px solid red; */
+  }
+  .box {
+    width: 270px;
+    height: 80px;
+    border-radius: 5px;
+    margin: 5px 5px 11.5px 5px;
+    padding: 25px;
+    text-align: center;
+    font-size: 22px;
+    color: #1e7fb2;
+    cursor: pointer;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+  }
  

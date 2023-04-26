@@ -10,7 +10,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/vehicleLost.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
-  <script src="lost.js"></script>
 <body>
   <header>
     <?php include('files/nav.html'); ?>
@@ -19,7 +18,7 @@
 
   <div class="boddy">
   <div class="container">
-    <form action="vehicleDetails.php" method="post">
+    <form action="" method="post">
       <h2>Lost Vehicle Application</h2>
       <div class="content">
 
@@ -91,12 +90,12 @@
 
         <div class="input-box">
             <label for="colour">Lost Date</label>
-            <input type="text" placeholder="color" name="date" required>
+            <input type="date" placeholder="color" name="date" required>
           </div>
 
           <div class="input-box">
             <label for="colour">Lost Time</label>
-            <input type="text" placeholder="color" name="time" required>
+            <input type="time" placeholder="color" name="time" required>
           </div>
       </div>
       <h4>Address</h4>

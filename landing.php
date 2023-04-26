@@ -84,18 +84,19 @@
     </div>
 
     <div class="services">
-        <div class="box">
+        
+        <a href="<?php echo isset($_SESSION['username']) ? 'vehicleRegistration.php' : 'login.php'; ?>" class="box">
             <i class="fa-solid fa-car"></i>
             <h6 class="box-heading"> Vehicles<br>Regestration</h6>
-        </div>
-        <div class="box">
+         </a>
+         <a href="<?php echo isset($_SESSION['username']) ? 'lostvehicle.php' : 'login.php'; ?>" class="box">
             <i class="fa-solid fa-house"></i>
             <h6 class="box-heading"> Lost Vehicles<br>Application</h6>
-        </div>
-        <div class="box">
+         </a>
+         <a href="<?php echo isset($_SESSION['username']) ? 'LostDocument.php' : 'login.php'; ?>" class="box">
             <i class="fa-solid fa-file"></i>
             <h6 class="box-heading"> Lost Document<br>Application</h6>
-        </div>
+        </a>
         <div class="box">
             <i class="fa-solid fa-file"></i>
             <h6 class="box-heading"> Lost Document<br>Application</h6>
