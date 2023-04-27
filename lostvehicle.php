@@ -76,7 +76,7 @@ if(isset($_POST['register'])) {
   <div class="boddy">
   <div class="container">
     <form action="" method="post">
-      <h2>Lost Vechicle Application</h2>
+      <h2>Lost Vehicle Application</h2>
       <div class="content">
 
         <div class="input-box">
