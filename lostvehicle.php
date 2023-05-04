@@ -24,25 +24,18 @@ if(isset($_POST['register'])) {
   $engine_number = $_POST['enginenumber'];
   $chasis_number = $_POST['chasisnumber'];
   $dealer_name = $_POST['Dname'];
-  $dealer_address = $_POST['Daddress'];
   $reg_owner = $_POST['Rowner'];
   $reg_address = $_POST['Raddress'];
   $color = $_POST['color'];
   $cc =$_POST['cc'];
-  $seats = $_POST['seats'];
   $date = $_POST['date'];
-  $time = $_POST['time'];
-  $address =$_POST['Address'];
-  $ward = $_POST['ward'];
+  $address =$_POST['address'];
 
 
-  // Get current date and time
-  date_default_timezone_set('Asia/Kolkata');
-  $date = date('Y-m-d H:i:s');
 
   // Insert values into database table
-  $sql = "INSERT INTO lostVehicle (Type, Model, VehicleNumber, EngineNumber, ChassisNumber, Company, DealerAddress, RegisteredOwner, RegisteredAddress, Color,CC,SeatCapacity,LostDate,LostTime,Muncipality/VDC,Ward, ReportDate)
-  VALUES ('$vehicle_type', '$vehicle_model', '$vehicle_number', '$engine_number', '$chasis_number', '$dealer_name', '$dealer_address', '$reg_owner', '$reg_address', '$color',$cc,$seats,$date,$time,$address,$ward, '$date')";
+  $sql = "INSERT INTO lostvehicle (Type, Model, VehicleNumber, EngineNumber, ChassisNumber, Dealer, registered_owner, registered_address, color,cc,lostDate,lostAddress)
+  VALUES ('$vehicle_type', '$vehicle_model', '$vehicle_number', '$engine_number', '$chasis_number', '$dealer_name',  '$reg_owner', '$reg_address', '$color',$cc,'$date','$address')";
 
   if ($conn->query($sql) === TRUE) {
     echo "<div style='color: red'>Your vehicle has been registered successfully</div>";
@@ -92,7 +85,7 @@ if(isset($_POST['register'])) {
 
         <div class="input-box">
           <label for="vechiclemodel">Vehicle Model</label>
-          <input type="number" placeholder="Enter Full Name" name="vehiclemodel" required>
+          <input type="text" placeholder="Enter Full Name" name="vehiclemodel" required>
         </div>
 
         <div class="input-box">
@@ -102,11 +95,11 @@ if(isset($_POST['register'])) {
 
         <div class="input-box">
           <label for="enginenumber">Engine Number</label>
-          <input type="number" placeholder="Enter valid Engine number" name="enginenumber" required>
+          <input type="text" placeholder="Enter valid Engine number" name="enginenumber" required>
         </div>
 
         <div class="input-box">
-          <label for="chasisnumber">Chasis Number</label>
+          <label for="chasisnumber">Chassis Number</label>
           <input type="text" placeholder="Enter Chasis Number" name="chasisnumber" required>
         </div>
 
@@ -115,10 +108,6 @@ if(isset($_POST['register'])) {
           <input type="text" placeholder="Enter Dealer Name" name="Dname" required>
         </div>
 
-        <div class="input-box">
-          <label for="Daddress">Dealer Address</label>
-          <input type="text" placeholder="Enter Address" name="Daddress" required>
-        </div>
 
         <div class="input-box">
           <label for="Rowner">Reg Owner</label>
@@ -137,45 +126,28 @@ if(isset($_POST['register'])) {
 
         <div class="input-box">
           <label for="colour">Cc</label>
-          <input type="number" placeholder="color" name="color" required>
+          <input type="text" placeholder="color" name="cc" required>
         </div>
 
         <div class="input-box">
-          <label for="colour">Seat Capacity</label>
-          <input type="number" placeholder="color" name="color" required>
-        </div>
-
-        <div class="input-box">
-            <label for="colour">Lost Date</label>
-            <input type="date" placeholder="color" name="color" required>
+            <label for="dateTime">Lost Date and Time</label>
+            <input type="datetime-local" placeholder="color" name=" date">
           </div>
 
           <div class="input-box">
-            <label for="colour">Lost Time</label>
-            <input type="time" placeholder="color" name="color" required>
+            <label for="address">Address</label>
+            <input type="text" placeholder="color" name="address" required>
           </div>
-      </div>
-      <h4>Address</h4>
-    <div class="content">
-      <div class="input-box">
-        <label for="vehicle">Municipality/VDC</label>
-      <select name="vehicle" id="vehicle">
-      <option value="Twowheelers">Two wheelers</option>
-      <option value="Threewheelers">Three wheelers</option>
-      <option value="Fourwheelers">Four wheelers</option>
-      </select>
-        </div>
 
-        <div class="input-box">
-            <label for="colour">Ward Number</label>
-            <input type="text" placeholder="color" name="color" required>
-          </div>
-        </div>
+      </div>
+    
+
+
 
       <div class="alert">
         <p>By clicking Register, you agree to our Terms, Privacy Policy and Cookies Ploicy.</p>
       </div>
-      <button class="learn-more">
+      <button class="learn-more" name = "register">
         <span class="circle" aria-hidden="true">
         <span class="icon arrow"></span>
         </span>

@@ -59,18 +59,7 @@
     <label>Password</label>
   </div>
   <?php
-  $servername = "localhost"; 
-  $username = "root"; 
-  $password = ""; 
-  $dbname = "trafficmanagementsystem"; 
-  
-
-  $conn = new mysqli($servername, $username, $password, $dbname);
-  
-
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-  }
+  include'files/conn.php';
   
  
   if (isset($_POST['login'])) {
@@ -87,6 +76,7 @@
 
       $users_result = mysqli_query($conn, $users_query);
 
+
       if (!$admin_result) {
         echo "Error: " . mysqli_error($conn);
         exit();
@@ -96,6 +86,7 @@
         echo "Error: " . mysqli_error($conn);
         exit();
       }
+
   
       
   
@@ -109,7 +100,7 @@
        $_SESSION['username'] = $username;
       $_SESSION['user_type'] = 'admin';
       echo "<script>showMessage();</script>";
-      header("Location: admin.php");
+      header("Location: traffic_offense/admin/?page=home");
       exit();
           
       } else if (mysqli_num_rows($users_result) > 0){
