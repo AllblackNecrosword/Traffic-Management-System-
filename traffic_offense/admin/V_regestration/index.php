@@ -1,8 +1,8 @@
-<!-- <?php if ($_settings->chk_flashdata('success')): ?>
+<?php if ($_settings->chk_flashdata('success')): ?>
 	<script>
 		alert_toast("<?php echo $_settings->flashdata('success') ?>", 'success')
 	</script>
-<?php endif; ?> -->
+<?php endif; ?>
 <style>
 	table.dataTable {
 		clear: both;
@@ -49,6 +49,7 @@
 							<th>Chassis Number</th>
 							<th>Owner</th>
 							<th>Registered Date</th>
+							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -89,20 +90,15 @@
 								<td>
 									<?php echo $row['RegisteredDate'] ?>
 								</td>
-								<td class="text-center">
-									<?php if ($row['status'] == 1): ?>
-										<span class="badge badge-success">Active</span>
-									<?php else: ?>
-										<span class="badge badge-secondary">Inactive</span>
-									<?php endif; ?>
-								</td>
+								
+								
 								<td align="center">
 									<button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
 										Action
 										<span class="sr-only">Toggle Dropdown</span>
 									</button>
 									<div class="dropdown-menu" role="menu">
-										<a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>">
+										<a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['Vehicle_Number'] ?>">
 											<span class="fa fa-trash text-danger"></span> Delete
 										</a>
 									</div>
@@ -128,12 +124,12 @@
 			columnDefs: [{ orderable: false, targets: [5, 6] }]
 		});
 	})
-	function delete_offense($id) {
+	function delete_offense(id) {
 		start_loader();
 		$.ajax({
-			url: _base_url_ + "classes/Master.php?f=delete_offense_record",
+			url: _base_url_ + "classes/Master.php?f=delete_vehicle_record",
 			method: "POST",
-			data: { id: $id },
+			data: { vehicile_number: $id },
 			dataType: "json",
 			error: err => {
 				console.log(err)
@@ -142,6 +138,7 @@
 			},
 			success: function (resp) {
 				if (typeof resp == 'object' && resp.status == 'success') {
+					console.log($id);
 					location.reload();
 				} else {
 					alert_toast("An error occured.", 'error');

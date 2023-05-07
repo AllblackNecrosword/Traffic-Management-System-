@@ -1,6 +1,6 @@
 <?php
 if(isset($_GET['id']) && $_GET['id'] > 0){
-    $qry = $conn->query("SELECT * from `offense_list` where id = '{$_GET['id']}' ");
+    $qry = $conn->query("SELECT * from `offense` where ID = '{$_GET['id']}' ");
     if($qry->num_rows > 0){
         foreach($qry->fetch_assoc() as $k => $v){
             $$k=stripslashes($v);
@@ -19,9 +19,11 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
         width:170px; 
     }
 </style>
+<!-- <form action="manage_record.php" method="post"> -->
 <div class="card card-outline card-info">
-	<div class="card-header">
-		<h3 class="card-title"><?php echo isset($id) ? "Update ": "Create New " ?> Offense Record</h3>
+    
+    <div class="card-header">
+		<h3 class="card-title"><?php echo isset($id) ? "Update": "Create New " ?> Offense Record</h3>
 	</div>
 	<div class="card-body">
 		<form action="" id="offense-form">
@@ -29,8 +31,8 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                    <lable class="control-label" for="date_created">Date Violated</lable>
-                    <input type="datetime-local" class="form-control" name="date_created" id="date_created" value="<?php echo isset($date_created) ? date("Y-m-d\\TH:i",strtotime($date_created)) : date("Y-m-d\\TH:i") ?>" required>
+                   <label class="control-label" for="Date">Date Violated</label>
+                    <input type="datetime-local" class="form-control" name="Date" id="Date" value="<?php echo isset($Date) ? date("Y-m-d\\TH:i",strtotime($Date)) : date("Y-m-d\\TH:i") ?>" required>
                 </div>
                 <div class="form-group">
                     <lable class="control-label" for="ticket_no">Ticket No.</lable>
@@ -42,6 +44,10 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                 </div>
             </div>
             <div class="col-6">
+            <div class="form-group">
+                    <lable class="control-label" for="violator_name">Violator Name</lable>
+                    <input type="text" class="form-control" name="violator_name" id="violator_name" value="<?php echo isset($violator_name) ? $violator_name : '' ?>" required>
+                </div>
                 <div class="form-group">
                     <lable class="control-label" for="officer_id">Officer ID.</lable>
                     <input type="text" class="form-control" name="officer_id" id="officer_id" value="<?php echo isset($officer_id) ? $officer_id : '' ?>" required>
@@ -53,8 +59,8 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                 <div class="form-group">
                     <lable class="control-label" for="status">Status</lable>
                     <select name="status" id="status" class="custom-select" required>
-                        <option value="0" <?php echo (isset($status) && $status == '0') ? 'selected' : '' ?>>Pending</option>
-                        <option value="1" <?php echo (isset($status) && $status == '1') ? 'selected' : '' ?>>Paid</option>
+                        <option>Pending</option>
+                        <option>Paid</option>
                     </select>
                 </div>
             </div>
@@ -102,7 +108,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                     <tbody>
                         <?php
                         if(isset($id)):
-                        $olist = $conn->query("SELECT i.*,o.code,o.name FROM `offense_items` i inner join `offenses` o on i.offense_id = o.id where i.driver_offense_id ='{$id}' ");
+                        $olist = $conn->query("SELECT * FROM  `offenses` order by 'date_created' desc ");
                         while($row = $olist->fetch_assoc()):
                         ?>
                         <tr>
@@ -143,7 +149,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 		</form>
 	</div>
 	<div class="card-footer">
-		<button class="btn btn-flat btn-primary" form="offense-form">Save</button>
+		<button class="btn btn-flat btn-primary" name="save" form="offense-form">Save</button>
 		<a class="btn btn-flat btn-default" href="?page=offenses">Cancel</a>
 	</div>
 </div>
@@ -235,3 +241,47 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 
 	})
 </script>
+
+<!-- <?php
+// Check if the form is submitted
+if(isset($_POST['save'])) {
+
+    // Get the form data
+    $id = $_POST['id'];
+    $date_created = date("Y-m-d H:i:s", strtotime($_POST['date_created']));
+    $ticket_no = $_POST['ticket_no'];
+    $vehicles_no = $_POST['vehicles_no'];
+    $officer_id = $_POST['officer_id'];
+    $officer_name = $_POST['officer_name'];
+    $ViolatorName=$_POST['violator_name'];
+    $status = $_POST['status'];
+    $offense = $_POST['offense_list'];
+
+    // Save the data to the database
+    $sql = "INSERT INTO `offense` (`Date`, `OffenseID`, `VehicleNumber`, `OfficierID`, `OfficerName`, `ViolatorName`, `Status`, `OffenseType`, `Amount`) VALUES ";
+    foreach ($offense_list as $offense) {
+        $sql .= "('$date_created', '$ticket_no', '$vehicles_no', '$officer_id', '$officer_name', '$ViolatorName', '$status', '".$offense['name']."', ".$offense['fine']."),";
+    }
+    $sql = rtrim($sql, ",");
+    if ($conn->query($sql)) {
+        $message = "Offense data inserted successfully";
+        // header('location: offenses/index.php');
+        exit;
+    } else {
+        $message = "Error inserting offense data: " . $conn->error;
+    }
+     
+}
+
+// Check if the form is canceled
+if(isset($_POST['cancel'])) {
+
+    // Redirect to the offense list page
+    header('location: index.php');
+    exit;
+}
+?>
+
+
+ </form>
+	 -->

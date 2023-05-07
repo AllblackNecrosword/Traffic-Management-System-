@@ -239,48 +239,74 @@ Class Master extends DBConnection {
 				$data .= " `{$k}`='{$v}' ";
 			}
 		}
-		$chk = $this->conn->query("SELECT * FROM `offense_list` where  ticket_no = '{$ticket_no}' ".(($id>0)? " and id!= '{$id}' " : ""))->num_rows;
+		$chk = $this->conn->query("SELECT * FROM `offense` where  ticket_no = '{$ticket_no}' ".(($id>0)? " and id!= '{$id}' " : ""))->num_rows;
 		$this->capture_err();
 		if($chk > 0){
 			$resp['status'] = 'failed';
-			$resp['msg'] = "Offense Ticker No. already exist in the database. Please review and try again.";
+			$resp['msg'] = "Offense Ticket No. already exist in the database. Please review and try again.";
 			return json_encode($resp);
 			exit;
 		}
 
 		if(empty($id)){
-			$sql = "INSERT INTO `offense_list` set {$data} ";
+			$sql = "INSERT INTO `offense` set {$data} ";
 		}else{
-			$sql = "UPDATE `offense_list` set {$data} where id = '{$id}' ";
+			$sql = "UPDATE `offense` set {$data} where id = '{$id}' ";
 		}
 		$save = $this->conn->query($sql);
 		$this->capture_err();
-		$driver_offense_id = empty($id) ? $this->conn->insert_id : $id;
-		$this->conn->query("DELETE FROM `offense_items` where `driver_offense_id` = '{$driver_offense_id}'");
-		$this->capture_err();
-		$data = "";
-		foreach($offense_id as $k => $v){
-			if(!empty($data)) $data .= ", ";
-			$data .= "('{$driver_offense_id}','{$v}','{$fine[$k]}','{$status}','{$date_created}')";
-		}
-		$save2= $this->conn->query("INSERT INTO `offense_items` (`driver_offense_id`,`offense_id`,`fine`,`status`,`date_created`) VALUES {$data}");
-		$this->capture_err();
-		if($save && $save2){
+		// $driver_offense_id = empty($id) ? $this->conn->insert_id : $id;
+		// $this->conn->query("DELETE FROM `offense_items` where `driver_offense_id` = '{$driver_offense_id}'");
+		// $this->capture_err();
+		// $data = "";
+		// foreach($offense_id as $k => $v){
+		// 	if(!empty($data)) $data .= ", ";
+		// 	$data .= "('{$driver_offense_id}','{$v}','{$fine[$k]}','{$status}','{$date_created}')";
+		// }
+		// $save2= $this->conn->query("INSERT INTO `offense` (`OffenseID`,`ViolatorName`,`OfficerName`,`OfficierID`,`VehicleNumber`,'OffenseType',Amount,'Status','Date') VALUES {$data}");
+		// $this->capture_err();
+		if($save){
 			if(empty($id))
 				$this->settings->set_flashdata('success'," New Offense Record successfully saved.");
 			else
 				$this->settings->set_flashdata('success'," Offense Record successfully updated.");
 			$resp['status'] = 'success';
-			$resp['id'] = $driver_offense_id;
+			// $resp['id'] = $driver_offense_id;
 		}else{
 			$resp['status'] = 'failed';
 			$resp['err'] = $this->conn->error."[{$sql}]";
 		}
 		return json_encode($resp);
 	}
+	function delete_lostvehicle_record(){
+		extract($_POST);
+		$del = $this->conn->query("DELETE FROM `lostvehicle` where id = '{$id}'");
+		if($del){
+			$resp['status'] = 'success';
+			$this->settings->set_flashdata('success'," Record successfully deleted.");
+		}else{
+			$resp['status'] = 'failed';
+			$resp['error'] = $this->conn->error;
+		}
+		return json_encode($resp);
+
+	}
+	function delete_vehicle_record(){
+		extract($_POST);
+		$del = $this->conn->query("DELETE FROM `registered_vehicle` where Vehicle_Number = '{$id}'");
+		if($del){
+			$resp['status'] = 'success';
+			$this->settings->set_flashdata('success',"Vehicle Record successfully deleted.");
+		}else{
+			$resp['status'] = 'failed';
+			$resp['error'] = $this->conn->error;
+		}
+		return json_encode($resp);
+
+	}
 	function delete_offense_record(){
 		extract($_POST);
-		$del = $this->conn->query("DELETE FROM `offense_list` where id = '{$id}'");
+		$del = $this->conn->query("DELETE FROM `offense` where ID = '{$id}'");
 		if($del){
 			$resp['status'] = 'success';
 			$this->settings->set_flashdata('success',"Offense Record successfully deleted.");
@@ -319,6 +345,11 @@ switch ($action) {
 	case 'delete_offense_record':
 		echo $Master->delete_offense_record();
 	break;
+	case 'delete_vehicle_record':
+		echo $Master->delete_vehicle_record();
+	break;
+	case 'delete_lostvehicle_record':
+		echo $Master ->delete_lostvehicle_record();
 	case 'delete_img':
 		echo $Master->delete_img();
 	break;

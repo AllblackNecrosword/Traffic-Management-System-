@@ -43,7 +43,7 @@
 				<tbody>
 					<?php 
 					$i = 1;
-						$qry = $conn->query("SELECT *,concat(firstname,' ',lastname) as name from `users` where id != '1' and id != '{$_settings->userdata('id')}' order by concat(firstname,' ',lastname) asc ");
+						$qry = $conn->query("SELECT *,concat(firstName,' ',Lastname) as name from `traffic` where id != '1' and id != '{$_settings->userdata('id')}' order by concat(firstname,' ',lastname) asc ");
 						while($row = $qry->fetch_assoc()):
 					?>
 						<tr>

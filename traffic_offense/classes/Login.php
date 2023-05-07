@@ -12,13 +12,13 @@ class Login extends DBConnection {
 	public function __destruct(){
 		parent::__destruct();
 	}
-	public function index(){
-		echo "<h1>Access Denied</h1> <a href='".base_url."'>Go Back.</a>";
-	}
+	// public function index(){
+	// 	echo "<h1>Access Denied</h1> <a href='".base_url."'>Go Back.</a>";
+	// }
 	public function login(){
 		extract($_POST);
 
-		$qry = $this->conn->query("SELECT * from users where username = '$username' and password = md5('$password') ");
+		$qry = $this->conn->query("SELECT * from admin where Email = '$username' and Password = '$password'");
 		if($qry->num_rows > 0){
 			foreach($qry->fetch_array() as $k => $v){
 				if(!is_numeric($k) && $k != 'password'){

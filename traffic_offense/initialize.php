@@ -13,5 +13,5 @@ if (!defined('DB_USERNAME'))
 if (!defined('DB_PASSWORD'))
     define('DB_PASSWORD', "");
 if (!defined('DB_NAME'))
-    define('DB_NAME', "traffic_offense_db");
+    define('DB_NAME', "trafficmanagementsystem");
 ?>

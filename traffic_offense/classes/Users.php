@@ -35,7 +35,7 @@ Class Users extends DBConnection {
 				}
 		}
 		if(empty($id)){
-			$qry = $this->conn->query("INSERT INTO users set {$data}");
+			$qry = $this->conn->query("INSERT INTO admin set {$data}");
 			if($qry){
 				$this->settings->set_flashdata('success','User Details successfully saved.');
 				return 1;
@@ -44,7 +44,7 @@ Class Users extends DBConnection {
 			}
 
 		}else{
-			$qry = $this->conn->query("UPDATE users set $data where id = {$id}");
+			$qry = $this->conn->query("UPDATE admin set $data where id = {$id}");
 			if($qry){
 				$this->settings->set_flashdata('success','User Details successfully updated.');
 				foreach($_POST as $k => $v){
@@ -58,7 +58,7 @@ Class Users extends DBConnection {
 
 				return 1;
 			}else{
-				return "UPDATE users set $data where id = {$id}";
+				return "UPDATE admin set $data where id = {$id}";
 			}
 			
 		}
@@ -66,7 +66,7 @@ Class Users extends DBConnection {
 	public function delete_users(){
 		extract($_POST);
 		$avatar = $this->conn->query("SELECT avatar FROM users where id = '{$id}'")->fetch_array()['avatar'];
-		$qry = $this->conn->query("DELETE FROM users where id = $id");
+		$qry = $this->conn->query("DELETE FROM traffic where id = $id");
 		if($qry){
 			$this->settings->set_flashdata('success','User Details successfully deleted.');
 			if(is_file(base_app.$avatar))

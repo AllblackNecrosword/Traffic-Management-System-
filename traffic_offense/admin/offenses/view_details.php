@@ -1,23 +1,23 @@
 <?php
 require_once('../../config.php');
 if(isset($_GET['id']) && $_GET['id'] > 0){
-    $qry = $conn->query("SELECT r.*,d.license_id_no, d.name as driver from `offense_list` r inner join `drivers_list` d on r.driver_id = d.id where r.id = '{$_GET['id']}' ");
+    $qry = $conn->query("SELECT * FROM 'offense' WHERE id = '{$_GET['id']}' ");
     if($conn->error){
         echo $conn->error ."\n";
-        echo "SELECT r.*,d.license_id_no, d.name as driver from `offense_list` r inner join `drivers_list` on r.driver_id = d.id where r.id = '{$_GET['id']}' ";
+        echo "SELECT * FROM 'offense' WHERE id = '{$_GET['id']}' ";
     }
-    $qry2 = $conn->query("SELECT i.*,o.code,o.name from `offense_items` i inner join `offenses` o on i.offense_id = o.id where i.driver_offense_id = '{$_GET['id']}' ");
-    if($qry->num_rows > 0){
-        foreach($qry->fetch_assoc() as $k => $v){
-            $$k=$v;
-        }
-    }
-    $offense_arr = array();
-	if($qry2->num_rows > 0){
-        while($row = $qry2->fetch_assoc()){
-            $offense_arr[]=$row;
-        }
-    }
+//     $qry2 = $conn->query("SELECT * `offenses` WHERE  = '{$_GET['id']}' ");
+//     if($qry->num_rows > 0){
+//         foreach($qry->fetch_assoc() as $k => $v){
+//             $$k=$v;
+//         }
+//     }
+//     $offense_arr = array();
+// 	if($qry2->num_rows > 0){
+//         while($row = $qry2->fetch_assoc()){
+//             $offense_arr[]=$row;
+//         }
+//     }
 }
 ?>
 <div class="container-fluid">
@@ -49,21 +49,21 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                         <div class="col-12">
                             <div class="row justify-content-between  w-max-100">
                                 <div class="col-6 d-flex w-max-100">
-                                    <label class="float-left w-auto whitespace-nowrap">Ticken No: </label>
-                                    <p class="col-md-auto border-bottom px-2 border-dark w-100"><b><?php echo $ticket_no ?></b></p>
+                                    <label class="float-left w-auto whitespace-nowrap">Ticket No: </label>
+                                    <p class="col-md-auto border-bottom px-2 border-dark w-100"><b><?php echo $ticket_no?></b></p>
                                 </div>
                                 <div class="col-6 d-flex w-max-100">
                                     <label class="float-left w-auto whitespace-nowrap">DateTime.: </label>
-                                    <p class="col-md-auto border-bottom px-2 border-dark w-100"><b><?php echo date("M d, Y h:i A",strtotime($date_created)) ?></b></p>
+                                    <p class="col-md-auto border-bottom px-2 border-dark w-100"><b><?php echo date("M d, Y h:i A",strtotime($Date)) ?></b></p>
                                 </div>
                             </div>
-                            <div class="d-flex w-max-100">
+                            <!-- <div class="d-flex w-max-100">
                                 <label class="float-left w-auto whitespace-nowrap">License ID:</label>
                                 <p class="col-md-auto border-bottom border-dark w-100"><b><?php echo $license_id_no ?></b></p>
-                            </div>
+                            </div> -->
                             <div class="d-flex w-max-100">
                                 <label class="float-left w-auto whitespace-nowrap">Vehicles's No:</label>
-                                <!-- <p class="col-md-auto border-bottom border-dark w-100"><b><?php echo $vehiclesno ?></b></p> -->
+                                <!-- <p class="col-md-auto border-bottom border-dark w-100"><b><?php echo $vehicles_no ?></b></p> -->
                             </div>
                         </div>
                     </div>
@@ -87,7 +87,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                     <hr>
                     <div class="d-flex w-max-100">
                         <label class="float-left w-auto whitespace-nowrap">Ticket Status:</label>
-                        <p class=" border-bottom border-dark px-4"><b><?php echo ($status == 1) ? "Paid" : "" ?></b></p>
+                        <p class=" border-bottom border-dark px-4"><b><?php echo ($status == "Paid") ? "Paid" : "" ?></b></p>
                     </div>
                 </td>
             </tr>
@@ -97,21 +97,21 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
         <table class='table table-stripped px-4'>
             <thead>
                 <tr>
-                    <th>Code</th>
-                    <th>Offense</th>
+                    <!-- <th>Code</th>
+                    <th>Offense</th> -->
                     <th>Fine</th>
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <!-- <?php 
                 foreach($offense_arr as $row):
-                ?>
+                ?> -->
                 <tr>
-                    <th><?php echo $row['code'] ?></th>
-                    <th><?php echo $row['name'] ?></th>
-                    <th class='text-right'><?php echo number_format($row['fine'],2) ?></th>
+                    <th><?php echo $row['total_amount'] ?></th>
+                    <!-- <th><?php echo $row['name'] ?></th>
+                    <th class='text-right'><?php echo number_format($row['fine'],2) ?></th> -->
                 </tr>
-                <?php endforeach; ?>
+                <!-- <?php endforeach; ?> -->
                 <?php if(count($offense_arr) <= 0): ?>
                 <tr>
                     <th class="text-center" colspan="3">No Record.</th>

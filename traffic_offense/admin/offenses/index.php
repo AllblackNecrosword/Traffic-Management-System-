@@ -21,52 +21,81 @@
 					<col width="15%">
 					<col width="20%">
 					<col width="10%">
+					<col width="10%">
+					<col width="10%">
+					<col width="10%">
+					<col width="10%">
 					<col width="5%">
 				</colgroup>
 				<thead>
 					<tr>
-						<th>#</th>
-						<th>DateTime</th>
-						<th>Ticket No.</th>
-						<th>License ID</th>
-						<th>Vehicle No.</th>
-						<th>Officer</th>
+						<th>ID</th>
+						<th>OffenseID</th>
+						<th>Violator Name</th>
+						<th>Officer Name</th>
+						<th>Officer ID</th>
+						<th>Vehicle Number</th>
+						<th>Offense</th>
 						<th>Status</th>
+						<th>Charge</th>
+						<th>Date</th>
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php 
 					$i = 1;
-						$qry = $conn->query("SELECT r.*,d.license_id_no FROM `offense_list` r inner join `drivers_list` d on r.driver_id = d.id order by unix_timestamp(r.date_created) desc ");
-						while($row = $qry->fetch_assoc()):
-					?>
-						<tr>
-							<td class="text-center"><?php echo $i++; ?></td>
-							<td><?php echo date("Y-m-d H:i A",strtotime($row['date_created'])) ?></td>
-							<td><a href="javascript:void(0)" class="view_details" data-id="<?php echo $row['id'] ?>"><?php echo $row['ticket_no'] ?></a></td>
-							<td><?php echo $row['license_id_no'] ?></td>
-							<td><?php echo $row['officer_name'] ?></td>
-							<td class="text-center">
-                                <?php if($row['status'] == 1): ?>
-                                    <span class="badge badge-success">Paid</span>
-                                <?php else: ?>
-                                    <span class="badge badge-secondary">Pending</span>
-                                <?php endif; ?>
-                            </td>
-							<td align="center">
-								 <button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
-				                  		Action
-				                    <span class="sr-only">Toggle Dropdown</span>
-				                  </button>
-				                  <div class="dropdown-menu" role="menu">
-				                    <a class="dropdown-item" href="?page=offenses/manage_record&id=<?php echo $row['id'] ?>"><span class="fa fa-edit text-primary"></span> Edit</a>
+					$qry = $conn->query("SELECT * FROM `offense` ORDER BY `Date` DESC");
+						while ($row = $qry->fetch_assoc()):
+						?>
+							<tr>
+								<td class="text-center">
+									<?php echo $row['ID'] ?>
+								</td>
+								
+								<td>
+								<!-- <td><a href="javascript:void(0)" class="view_details" data-id="<?php echo $row['id'] ?>"><?php echo $row['ticket_no'] ?></a></td> -->
+								<?php echo $row['ticket_no']?>
+								</td>
+								<td>
+									<?php echo $row['violator_name'] ?>
+								</td>
+								<td>
+									<?php echo $row['officer_name'] ?>
+								</td>
+								<td>
+									<?php echo $row['officer_id'] ?>
+								</td>
+								<td>
+									<?php echo $row['vehicles_no'] ?>
+								</td>
+								<td>
+									<?php echo $row['OffenseType'] ?>
+								</td>
+								<td>
+									<?php echo $row['status'] ?>
+								</td>
+								<td>
+									<?php echo $row['total_amount'] ?>
+								</td>
+								<td>
+									<?php echo $row['Date'] ?>
+								</td>
+								
+								
+								<td align="center">
+									<button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
+										Action
+										<span class="sr-only">Toggle Dropdown</span>
+									</button>
+									<div class="dropdown-menu" role="menu">
+				                    <a class="dropdown-item" href="?page=offenses/manage_record&id=<?php echo $row['ID'] ?>"><span class="fa fa-edit text-primary"></span> Edit</a>
 				                    <div class="dropdown-divider"></div>
-				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span> Delete</a>
+				                    <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['ID'] ?>"><span class="fa fa-trash text-danger"></span> Delete</a>
 				                  </div>
-							</td>
-						</tr>
-					<?php endwhile; ?>
+								</td>
+							</tr>
+						<?php endwhile; ?>
 				</tbody>
 			</table>
 		</div>

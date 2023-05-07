@@ -38,17 +38,17 @@
 						<tr>
 							<th>No.</th>
 							<th>Document Type</th>
-							<th>Full Name</th>
-							<th>Phone</th>
+							<th>Description</th>
 							<th>Lost Date & Time</th>
 							<th>Location</th>
+							<th>Report Date</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$i = 1;
-						$qry = $conn->query("SELECT r.*,d.license_id_no FROM `offense_list` r inner join `drivers_list` d on r.driver_id = d.id order by unix_timestamp(r.date_created) desc ");
+						$qry = $conn->query("SELECT * FROM `lost_document` ORDER BY `reportDate` DESC");
 						while ($row = $qry->fetch_assoc()):
 							?>
 							<tr>
@@ -56,23 +56,22 @@
 									<?php echo $i++; ?>
 								</td>
 								<td>
-									<?php echo date("Y-m-d H:i A", strtotime($row['date_created'])) ?>
+									<?php echo $row['DocumentType'] ?>
 								</td>
-								<td><a href="javascript:void(0)" class="view_details"
-										data-id="<?php echo $row['id'] ?>"><?php echo $row['ticket_no'] ?></a></td>
+								
 								<td>
-									<?php echo $row['license_id_no'] ?>
+									<?php echo $row['Description'] ?>
 								</td>
 								<td>
-									<?php echo $row['officer_name'] ?>
+									<?php echo $row['Date'] ?>
 								</td>
-								<td class="text-center">
-									<?php if ($row['status'] == 1): ?>
-										<span class="badge badge-success">Paid</span>
-									<?php else: ?>
-										<span class="badge badge-secondary">Pending</span>
-									<?php endif; ?>
+								<td>
+									<?php echo $row['Location'] ?>
 								</td>
+								<td>
+									<?php echo $row['reportDate'] ?>
+								</td>
+							
 								<td align="center">
 									<button type="button"
 										class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon"

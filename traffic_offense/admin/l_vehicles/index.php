@@ -47,63 +47,77 @@
 					</colgroup>
 					<thead>
 						<tr>
-							<th>No.</th>
-							<th>Vehicles Type</th>
-							<th>Vehicles Model</th>
+							<th>ID</th>
+							<th>Type</th>
+							<th>Model</th>
 							<th>Engine Number</th>
-							<th>Chasis Number</th>
+							<th>Chassis Number</th>
 							<th>Dealer Name/ Company</th>
 							<th>Owner Name</th>
-							<th>Colors</th>
-							<th>Seat capacity</th>
+							<th>Color</th>
 							<th>Cc</th>
 							<th>Lost Date & Time</th>
 							<th>Lost Address</th>
-							<th>Ward Number</th>
+							<th>Report Date</th>
 							<th>Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
 						$i = 1;
-						$qry = $conn->query("SELECT r.*,d.license_id_no FROM `offense_list` r inner join `drivers_list` d on r.driver_id = d.id order by unix_timestamp(r.date_created) desc ");
+						$qry = $conn->query("SELECT * FROM `lostvehicle` ORDER BY `reportDate` DESC");
 						while ($row = $qry->fetch_assoc()):
 							?>
 							<tr>
-								<td class="text-center">
+							<td class="text-center">
 									<?php echo $i++; ?>
 								</td>
+								
 								<td>
-									<?php echo date("Y-m-d H:i A", strtotime($row['date_created'])) ?>
-								</td>
-								<td><a href="javascript:void(0)" class="view_details"
-										data-id="<?php echo $row['id'] ?>"><?php echo $row['ticket_no'] ?></a></td>
-								<td>
-									<?php echo $row['license_id_no'] ?>
+									<?php echo $row['Type'] ?>
 								</td>
 								<td>
-									<?php echo $row['officer_name'] ?>
+									<?php echo $row['Model'] ?>
 								</td>
-								<td class="text-center">
-									<?php if ($row['status'] == 1): ?>
-										<span class="badge badge-success">Paid</span>
-									<?php else: ?>
-										<span class="badge badge-secondary">Pending</span>
-									<?php endif; ?>
+								<td>
+									<?php echo $row['VehicleNumber'] ?>
+								</td>
+								<td>
+									<?php echo $row['EngineNumber'] ?>
+								</td>
+								<td>
+									<?php echo $row['ChassisNumber'] ?>
+								</td>
+								<td>
+									<?php echo $row['Dealer'] ?>
+								</td>
+								<td>
+									<?php echo $row['color'] ?>
+								</td>
+								<td>
+									<?php echo $row['cc'] ?>
+								</td>
+								<td>
+									<?php echo $row['lostDate'] ?>
+								</td>
+								<td>
+									<?php echo $row['lostAddress'] ?>
+								</td>
+								<td>
+									<?php echo $row['reportDate'] ?>
 								</td>
 								<td align="center">
-									<button type="button"
-										class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon"
-										data-toggle="dropdown">
+									<button type="button" class="btn btn-flat btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
 										Action
 										<span class="sr-only">Toggle Dropdown</span>
 									</button>
 									<div class="dropdown-menu" role="menu">
-										<a class="dropdown-item delete_data" href="javascript:void(0)"
-											data-id="<?php echo $row['id'] ?>"><span class="fa fa-trash text-danger"></span>
-											Delete</a>
+										<a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?php echo $row['id'] ?>">
+											<span class="fa fa-trash text-danger"></span> Delete
+										</a>
 									</div>
 								</td>
+			
 							</tr>
 						<?php endwhile; ?>
 					</tbody>
@@ -127,7 +141,7 @@
 	function delete_offense($id) {
 		start_loader();
 		$.ajax({
-			url: _base_url_ + "classes/Master.php?f=delete_offense_record",
+			url: _base_url_ + "classes/Master.php?f=delete_lostvehicle_record",
 			method: "POST",
 			data: { id: $id },
 			dataType: "json",

@@ -76,6 +76,10 @@
 
       $users_result = mysqli_query($conn, $users_query);
 
+      $traffic_query = "SELECT * FROM traffic WHERE Email = '$email' AND Password = '$password'";
+
+      $traffic_result = mysqli_query($conn, $admin_query);
+
 
       if (!$admin_result) {
         echo "Error: " . mysqli_error($conn);
@@ -83,6 +87,11 @@
       }
 
       if (!$users_result) {
+        echo "Error: " . mysqli_error($conn);
+        exit();
+      }
+
+      if (!$traffic_result) {
         echo "Error: " . mysqli_error($conn);
         exit();
       }
@@ -95,7 +104,7 @@
           // User has been found, log them in
           echo "Admin logged in successfully";
          
-          // set session variables and redirect to admin page
+        // set session variables and redirect to admin page
         session_start();
        $_SESSION['username'] = $username;
       $_SESSION['user_type'] = 'admin';
@@ -113,6 +122,18 @@
           $_SESSION['user_type'] = 'user';
           header("Location: landing.php");
           exit();
+      }else if (mysqli_num_rows($traffic_result) > 0) {
+          // User has been found, log them in
+          echo "Admin logged in successfully";
+         
+          // set session variables and redirect to admin page
+        session_start();
+       $_SESSION['username'] = $username;
+      $_SESSION['user_type'] = 'traffic';
+      echo "<script>showMessage();</script>";
+      header("Location: traffic_offense/admin/?page=home");
+      exit();
+          
       }else{
         echo "<div style='color: red'>Password does not match</div>";
       }
