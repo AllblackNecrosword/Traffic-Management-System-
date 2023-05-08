@@ -250,10 +250,12 @@ Class Master extends DBConnection {
 
 		if(empty($id)){
 			$sql = "INSERT INTO `offense` set {$data} ";
+			$save = $this->conn->query($sql);
 		}else{
 			$sql = "UPDATE `offense` set {$data} where id = '{$id}' ";
+			$save = $this->conn->query($sql);
 		}
-		$save = $this->conn->query($sql);
+		
 		$this->capture_err();
 		// $driver_offense_id = empty($id) ? $this->conn->insert_id : $id;
 		// $this->conn->query("DELETE FROM `offense_items` where `driver_offense_id` = '{$driver_offense_id}'");

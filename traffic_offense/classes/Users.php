@@ -35,7 +35,7 @@ Class Users extends DBConnection {
 				}
 		}
 		if(empty($id)){
-			$qry = $this->conn->query("INSERT INTO admin set {$data}");
+			$qry = $this->conn->query("INSERT INTO users set {$data}");
 			if($qry){
 				$this->settings->set_flashdata('success','User Details successfully saved.');
 				return 1;
@@ -44,7 +44,7 @@ Class Users extends DBConnection {
 			}
 
 		}else{
-			$qry = $this->conn->query("UPDATE admin set $data where id = {$id}");
+			$qry = $this->conn->query("UPDATE users set $data where id = {$id}");
 			if($qry){
 				$this->settings->set_flashdata('success','User Details successfully updated.');
 				foreach($_POST as $k => $v){

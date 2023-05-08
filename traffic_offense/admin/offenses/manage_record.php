@@ -59,8 +59,8 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                 <div class="form-group">
                     <lable class="control-label" for="status">Status</lable>
                     <select name="status" id="status" class="custom-select" required>
-                        <option>Pending</option>
-                        <option>Paid</option>
+                        <option value="0" <?php echo (isset($status) && $status == '0') ? 'selected' : '' ?>>Pending</option>
+                        <option value="1" <?php echo (isset($status) && $status == '1') ? 'selected' : '' ?>>Paid</option>
                     </select>
                 </div>
             </div>
@@ -105,7 +105,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                              <tbody>
                         <?php
                         if(isset($id)):
                         $olist = $conn->query("SELECT * FROM  `offenses` order by 'date_created' desc ");
@@ -242,46 +242,3 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
 	})
 </script>
 
-<!-- <?php
-// Check if the form is submitted
-if(isset($_POST['save'])) {
-
-    // Get the form data
-    $id = $_POST['id'];
-    $date_created = date("Y-m-d H:i:s", strtotime($_POST['date_created']));
-    $ticket_no = $_POST['ticket_no'];
-    $vehicles_no = $_POST['vehicles_no'];
-    $officer_id = $_POST['officer_id'];
-    $officer_name = $_POST['officer_name'];
-    $ViolatorName=$_POST['violator_name'];
-    $status = $_POST['status'];
-    $offense = $_POST['offense_list'];
-
-    // Save the data to the database
-    $sql = "INSERT INTO `offense` (`Date`, `OffenseID`, `VehicleNumber`, `OfficierID`, `OfficerName`, `ViolatorName`, `Status`, `OffenseType`, `Amount`) VALUES ";
-    foreach ($offense_list as $offense) {
-        $sql .= "('$date_created', '$ticket_no', '$vehicles_no', '$officer_id', '$officer_name', '$ViolatorName', '$status', '".$offense['name']."', ".$offense['fine']."),";
-    }
-    $sql = rtrim($sql, ",");
-    if ($conn->query($sql)) {
-        $message = "Offense data inserted successfully";
-        // header('location: offenses/index.php');
-        exit;
-    } else {
-        $message = "Error inserting offense data: " . $conn->error;
-    }
-     
-}
-
-// Check if the form is canceled
-if(isset($_POST['cancel'])) {
-
-    // Redirect to the offense list page
-    header('location: index.php');
-    exit;
-}
-?>
-
-
- </form>
-	 -->
