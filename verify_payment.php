@@ -3,14 +3,16 @@
 $khalti_public_key = 'test_public_key_62f23974083e4e0a9bf0c644804bc217';
 $khalti_secret_key = 'test_secret_key_fdaa78917e8d4cab8866a694d9393e2e';
 
-if(isset($_POST['token']) && isset($_POST['amount']) && isset($_POST['offense_id'])){
+if (isset($_POST['token']) && isset($_POST['amount']) && isset($_POST['offense_id'])) {
     $offense_id = intval($_POST['offense_id']);
 
     // Verify payment with Khalti API
-    $args = http_build_query(array(
-        'token' => $_POST['token'],
-        'amount'  => $_POST['amount']
-    ));
+    $args = http_build_query(
+        array(
+            'token' => $_POST['token'],
+            'amount' => $_POST['amount']
+        )
+    );
 
     $url = "https://khalti.com/api/v2/payment/verify/";
 
@@ -18,7 +20,7 @@ if(isset($_POST['token']) && isset($_POST['amount']) && isset($_POST['offense_id
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS,$args);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $args);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
     $headers = ['Authorization: Key ' . $khalti_secret_key];
@@ -54,7 +56,7 @@ if(isset($_POST['token']) && isset($_POST['amount']) && isset($_POST['offense_id
         echo '<script>Payment done successfully</script>';
         echo '<script>window.location.href = "landing.php";</script>';
 
-        
+
         exit();
 
     } else {
