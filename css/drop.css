@@ -1,0 +1,80 @@
+.dropdown img{
+    height: 50px;
+    width: auto;
+  }
+  
+  
+  .dropbtn {
+    background-color: none;
+    color: white;
+    padding: 0;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+  }  
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #000;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+  }
+  
+
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  
+  .dropdown-content a:hover {background-color: #00ced1}
+  
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+  }
+  .username{
+    color: aliceblue;
+    font-weight: bold;
+    margin-left: 0px;
+  }
+  .services {
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 89%;
+    justify-content: space-between;
+    margin-left: 6%;
+    margin-top: 10px;
+    /* border:2px solid red; */
+  }
+  .box {
+    width: 270px;
+    height: 80px;
+    border-radius: 5px;
+    margin: 5px 5px 11.5px 5px;
+    padding: 25px;
+    text-align: center;
+    font-size: 22px;
+    color: #1e7fb2;
+    cursor: pointer;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+  }
+ 

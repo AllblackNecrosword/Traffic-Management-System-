@@ -1,0 +1,93 @@
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.Father{
+    border: 1px solid black; 
+    width: 75%;
+    margin-left: 12%;
+    
+}
+marquee{
+  background-color: red;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .logo {
+    margin-right: 10px;
+  }
+  
+  .logo img {
+    width: 100px;
+    height: auto;
+  }
+  
+  .content {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .flag {
+    margin-left: 10px;
+  }
+  
+  .flag img {
+    width: 100px;
+    height: auto;
+  }
+  
+  /* Table  */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  td {
+    font-size: 14px;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  .Details{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  }
+  .lastcontent{
+    padding-top: 2%;
+    font-weight: bold;
+  }
+  /* .Footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  } */
+
+  .Footer button {
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 1%;
+    margin-bottom: 2%;
+  }

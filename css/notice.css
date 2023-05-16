@@ -1,0 +1,12 @@
+/* body{
+    background-color:beige;
+} */
+.notice {
+    margin: 40px;
+    padding: 20px;
+    /* border: 2px solid black; */
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    text-align: justify;
+    background-color: white;
+  }
