@@ -17,7 +17,7 @@
     <?php
     include 'files/conn.php';
 
-    if (isset($_POST['register'])) {
+    if (isset($_POST['register'])) {}
         // Get form data
         $documentType = $_POST["vehicle"];
         $description = $_POST["Dname"];

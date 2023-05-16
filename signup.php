@@ -18,7 +18,7 @@
       }
     }
 
-    const inputFields = document.querySelectorAll('input');
+    const inputFields = document.querySelectorAll('input'):
   inputFields.forEach((input) => {
     input.addEventListener('focus', () => {
       // Clear the error message

@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<?php include('nav.php'); ?>
+    <?php include('nav.php'); ?>
     <div class="notice">
         <h1>उल्लङ्घन र जरिवाना</h1>
         <p>२०८०-०१-२०</p>
