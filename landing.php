@@ -74,7 +74,7 @@
                 echo '<a href="login.php" class="btn">Login</a>';
             }
             // session_destroy();
-
+            
             ?>
 
         </nav>
